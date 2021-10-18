@@ -4,7 +4,7 @@ This Airbnb clone was written using Next.js and Tailwind CSS using the Just In T
 
 ## Preview
 
-You can preview my project demo live on [Vercel](https://airbnb-clone-wasiqnauman.vercel.app/):
+You can preview my project demo live on [Here](https://airbnb-clone-wasiqnauman.vercel.app/).
 
 
 ## Deployment
