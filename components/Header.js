@@ -64,7 +64,9 @@ function Header() {
             minDate={new Date()}
             rangeColors={["#FD5B61"]}
             onChange={handleSelect}/>
-          </div>}
+          </div>
+          
+          }
 
       </header>
     );
