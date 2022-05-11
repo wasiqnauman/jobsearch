@@ -1,8 +1,22 @@
 import React from 'react'
 import Image from 'next/image'
-import { HeartIcon } from "@heroicons/react/outline"
+import { HeartIcon as HeartIconOutline } from "@heroicons/react/outline"
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid"
 import { StarIcon } from "@heroicons/react/solid"
-function InfoCard({img, location, title, description, star, price, total }) {
+import { useState } from 'react/cjs/react.development'
+
+
+
+function InfoCard({id, title, description, ratings, wage, numHrs, tags, longitude, latitude,img, location}) {
+    const [liked, setLiked] = useState(0)
+    const total = wage * numHrs;
+    const handleLiked = () => {
+        if(liked == 0)
+            setLiked(1)
+        else
+            setLiked(0)
+        console.log(liked)
+    }
   return (
     <div className="flex py-7 px-2 pr-4 border-b cursor-pointer 
     hover:opacity-80 hover:shadow-lg transition duration-200 ease-out
@@ -17,20 +31,20 @@ function InfoCard({img, location, title, description, star, price, total }) {
         </div>
         <div className="flex flex-col flex-grow pl-5">
             <div className="flex justify-between">
-                <p>{location}</p>
-                <HeartIcon className="h-7 cursor-pointer" />
+                <p>{title}</p>
+                {liked ?<HeartIconSolid onClick={handleLiked} className="h-7 cursor-pointer text-red-600 transition transform duration-200 ease-in-out" /> :<HeartIconSolid onClick={handleLiked} className="h-7 cursor-pointer text-red-200 transition transform duration-200 ease-in-out" />}
             </div>
-            <h4 className="text-xl">{title}</h4>
+            <h4 className="text-xl">{description}</h4>
             <div className="border-b w-10 pt-2"/>
-            <p className="pt-2 text-sml text-gray-500 flex-grow">{description}</p>
+            <p className="pt-2 text-sml text-gray-500 flex-grow">{tags}</p>
             <div className="flex justify-between items-end pt-5">
                 <p className="flex items-center">
                     <StarIcon className="h-5 text-red-400"/>
-                    {star}
+                    {ratings}
                 </p>
                 <div>
-                    <p className="text-l lg:text-2xl font-semibold pb-2">{price}</p>
-                    <p className="text-right font-extralight">{total}</p>
+                    <p className="text-l lg:text-2xl font-semibold pb-2">${wage}/hr</p>
+                    <p className="text-right font-extralight">Total: ${total}</p>
                 </div>
             </div>
         </div>

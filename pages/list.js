@@ -7,23 +7,17 @@ import InfoCard from "../components/InfoCard";
 
 
 
-function Search({searchResults}) {
-    console.log(searchResults);
+function List({searchResults}) {
     const router = useRouter();
-    const {location, startDate, endDate, numGuests} = router.query;
-    console.log(startDate)
-    const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-    const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
-    const range = `${formattedStartDate} -${formattedEndDate}`;
     return (
         <div>
-            <Header placeholder={`${location} | ${range} | ${numGuests}`} />
+            <Header placeholder={""} />
             
             <main className="flex">
                 <section className="flex-grow pt-8 px-6">
                 <div className="flex flex-col justify-center items-center">
-                    <h1 className="text-3xl font-semibold mb-1">Jobs in {location}</h1>
-                    <p className="text-xs mb-6">{searchResults.length}+ job postings available in {location} for {range}</p>
+                    <h1 className="text-3xl font-semibold mb-1">Jobs in your area</h1>
+                    <p className="text-xs mb-6">{searchResults.length}+ job postings available nearby</p>
                 </div>
                 <div className="hidden lg:inline-flex mb-5 space-x-3 text-gray-800 whitespace-nowrap">
                     <p className="button">Local postings</p>
@@ -56,7 +50,7 @@ function Search({searchResults}) {
     )
 }
 
-export default Search;
+export default List;
 
 
 
