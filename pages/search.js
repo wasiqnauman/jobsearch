@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import { useRouter } from "next/dist/client/router";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
+import LocalMap from "../components/LocalMap";
 
 
 
@@ -15,6 +16,7 @@ function Search({searchResults}) {
     const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
     const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
     const range = `${formattedStartDate} -${formattedEndDate}`;
+
     return (
         <div>
             <Header placeholder={`${location} | ${range} | ${numGuests}`} />
@@ -48,6 +50,9 @@ function Search({searchResults}) {
                         />
                     ))}
                 </div>
+                </section>
+                <section className="hidden xl:inline-flex min-w-[600px] ">
+                    <LocalMap searchResults={searchResults}/>
                 </section>
             </main>
 

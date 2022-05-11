@@ -32,7 +32,7 @@ export default function Home( { exploreData, cardsData }) {
           </div>
         </section>
         <section>
-          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <h2 className="text-4xl font-semibold py-8">Do what you do best</h2>
           <div className="flex space-x-4 overflow-scroll scrollbar-hide p-3 -ml-3">
             {cardsData?.map(({ img, title }) => (
               <MediumCard key={img} img={img} title={title} />
@@ -40,12 +40,6 @@ export default function Home( { exploreData, cardsData }) {
           </div>
         </section>
 
-        <LargeCard
-          img="https://links.papareact.com/4cj"
-          title="The Greatest Outdoors"
-          description="Wishlists curated by Airbnb."
-          buttonText="Get Inspired"
-        />
       </main>
       <Footer />
     </div>
@@ -54,10 +48,14 @@ export default function Home( { exploreData, cardsData }) {
 
 export async function getStaticProps() {
   // Fetch data for the cards in explore nearby section 
-  const exploreData = await fetch('https://links.papareact.com/pyp').then(res => res.json());
+  const exploreData = await fetch('http://127.0.0.1:5000/explore',{
+    headers : { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+     }}).then(res => res.json());
 
   // Fetch data for the cards in Live Anywhere section 
-  const cardsData = await fetch('https://links.papareact.com/zp1').then(res => res.json());
+  const cardsData = await fetch('http://127.0.0.1:5000/cards').then(res => res.json());
 
   return {
     props: {

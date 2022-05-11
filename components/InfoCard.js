@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { HeartIcon as HeartIconOutline } from "@heroicons/react/outline"
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/solid"
 import { StarIcon } from "@heroicons/react/solid"
-import { useState } from 'react/cjs/react.development'
+import { useState } from 'react'
 
 
 
@@ -39,7 +39,7 @@ function InfoCard({id, title, description, ratings, wage, numHrs, tags, longitud
             <p className="pt-2 text-sml text-gray-500 flex-grow">{tags}</p>
             <div className="flex justify-between items-end pt-5">
                 <p className="flex items-center">
-                    <StarIcon className="h-5 text-red-400"/>
+                    <StarIcon className="h-5 text-yellow-500"/>
                     {ratings}
                 </p>
                 <div>
